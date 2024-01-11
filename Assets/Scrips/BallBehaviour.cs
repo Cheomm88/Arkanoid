@@ -16,7 +16,7 @@ public class BallBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += direction * Time.deltaTime * ballSpeed;
+        transform.position += direction.normalized * Time.deltaTime * ballSpeed;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

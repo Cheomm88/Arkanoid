@@ -5,9 +5,23 @@ using TMPro;
 public class PointsManager : MonoBehaviour
 {
 
+    public static PointsManager instance;
+
     public int score = 0;
     [SerializeField]
     TextMeshProUGUI textScore;
+
+    private void Awake()
+    {
+        if (PointsManager.instance == null)
+        {
+            PointsManager.instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }       
+    }
     private void Start()
     {
         textScore.text = "0000";

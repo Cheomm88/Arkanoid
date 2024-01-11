@@ -7,8 +7,7 @@ public class BallBehaviour : MonoBehaviour
     Vector3 direction;
     [SerializeField]
     float ballSpeed = 5f;
-    [SerializeField]
-    PointsManager pointsManager;
+
     private void Start()
     {
         direction = new Vector3(Random.Range(-1f,1f), 1f, 0f);
@@ -28,8 +27,8 @@ public class BallBehaviour : MonoBehaviour
         {
             direction = new Vector3(Random.Range(-1f, 1f), -direction.y, 0f);
             BrickComponent brick = collision.gameObject.GetComponent<BrickComponent>();
-            pointsManager.AddPoints(brick.points);
-            Destroy(collision.gameObject);
+            brick.RecieveHit();
+            
         }
         else if (collision.gameObject.CompareTag("Player"))
         {
